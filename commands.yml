@@ -1,0 +1,112 @@
+# active fast book
+mamba activate fastbook
+
+# install jupiter lab
+mamba install -c conda-forge jupyterlab
+
+# start jupiter lab
+jupyter lab
+
+# create new env along with python version
+mamba create --name myenvi python=3.6
+
+# delete env
+conda env remove --name <env_name>
+
+# list evironment
+mamba env list
+
+# Register env as kernel 
+python -m ipykernel install --user --name my_env --display-name "fastbook"
+
+-----------------------------------------------------------------------------------
+Working with Environment in Mamba:
+- Channels: Where to get resource, it's like a package hosting name, tell mamba where to get dependencies packages
+
+
+
+show me work flow when working with conda
+Sure! Here's a basic workflow for using Conda:
+
+Install Conda: First, you need to install Conda on your system. You can download and install it from the official Conda website.
+
+Create a new environment: Once Conda is installed, you can create a new environment for your project. To do this, run the command conda create --name myenv, where myenv is the name of your environment.
+
+Activate the environment: After creating the environment, you need to activate it to use it. To activate the environment, run the command conda activate myenv.
+
+Install packages: With the environment activated, you can install the packages you need for your project. To install a package, run the command conda install package_name.
+
+Use the environment: Once you have installed the necessary packages, you can start using them in your project. Depending on your project and development environment, you may need to set up additional configuration or dependencies, such as a virtual environment or Jupyter notebook.
+
+Deactivate the environment: When you're done working in your environment, you can deactivate it using the command conda deactivate.
+
+Update or delete the environment: If you need to update the packages in your environment, you can run the command conda update --all. If you no longer need the environment, you can delete it using the command conda env remove --name myenv.
+
+It's worth noting that Conda provides many other features and options beyond this basic workflow, such as creating and managing environments with environment files, managing channels and package sources, and creating virtual environments within environments.
+
+
+
+
+hngbv95@gmail.com
+So, we always have at least one active environment?
+Yes, in Conda, there is always at least one active environment. When you install Conda, a default base environment is created and activated. This base environment contains the core Conda packages and any other packages that were installed when Conda was installed.
+
+You can create and activate additional environments as needed for different projects or purposes, but there must always be at least one active environment. When you open a new terminal or command prompt window, the base environment is automatically activated by default. You can activate a different environment using the conda activate command followed by the name of the environment.
+
+
+
+
+hngbv95@gmail.com
+can I delete base env?
+Technically, you can delete the base environment in Conda, but it is not recommended to do so because it contains the core Conda packages that are required for Conda to function properly. Deleting the base environment can potentially cause issues with Conda and may make it difficult to manage your packages and environments.
+
+If you do need to delete the base environment for some reason, it is recommended that you create a new environment to use as your base environment before deleting the old one. To create a new environment, you can use the conda create command followed by the desired environment name and any packages you want to install. For example, the following command creates a new environment named myenv with Python 3.9:
+
+lua
+Copy code
+conda create --name myenv python=3.9
+Once you have created the new environment, you can activate it using the conda activate command and set it as your default environment using the conda config --set env_prompt '({name})' command. Finally, you can safely delete the old base environment using the conda env remove --name base command.
+
+
+
+
+hngbv95@gmail.com
+what happened if I install jupiter notebook in base environment but invoke jupiter notebook in another environment?
+If you install Jupyter Notebook in the base environment but then activate another environment and try to run Jupyter Notebook from there, you may encounter issues or unexpected behavior.
+
+When you run jupyter notebook in the terminal, it will try to launch Jupyter Notebook using the Python interpreter and packages that are currently active in your environment. If you are in an environment other than the base environment and try to run Jupyter Notebook without installing it in that environment, it may not be able to find the necessary packages and dependencies to run properly.
+
+In some cases, if there are conflicting versions of packages or dependencies installed in the base environment and your active environment, it may cause issues when running Jupyter Notebook from the active environment.
+
+To avoid these potential issues, it is recommended to install Jupyter Notebook and other packages in each environment separately, rather than relying on the packages installed in the base environment. This can help ensure that you have a clean and consistent environment for each project or task you are working on.
+
+
+
+
+hngbv95@gmail.com
+if I use the environment yaml file, how can I create the env?
+You can create a new environment from the environment.yml file by running the following command in your terminal:
+
+bash
+Copy code
+conda env create -f environment.yml
+This command will create a new environment with the name specified in the environment.yml file, and install all the packages and dependencies listed in the file.
+
+Note that you should be in the directory where the environment.yml file is located when you run this command. Also, make sure you have conda installed and that your conda environment is up to date before running this command.
+
+
+
+
+hngbv95@gmail.com
+If I Update the env.yml, should I run that command again?
+Yes, if you update the environment.yml file with new packages or changes to the environment configuration, you will need to run the conda env update command to apply the changes to your environment.
+
+Here's an example command to update an existing environment with the changes in an updated environment.yml file:
+
+css
+Copy code
+conda env update --name myenv --file environment.yml
+This command will update the environment with the name myenv using the new configuration in the environment.yml file.
+
+
+
