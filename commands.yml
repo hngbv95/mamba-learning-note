@@ -1,4 +1,4 @@
-# active fast book
+# active env
 mamba activate fastbook
 
 # install jupiter lab
@@ -12,6 +12,9 @@ mamba create --name myenvi python=3.6
 
 # delete env
 conda env remove --name <env_name>
+
+# export env (window)
+mamba env export | findstr -v "prefix" > env.yml
 
 # list evironment
 mamba env list
